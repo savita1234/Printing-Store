@@ -1,0 +1,118 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+    <style type="text/css">
+        ul
+        {
+            list-style-type:none;
+            margin:0;
+            padding:0;
+            overflow:hidden;
+            background-color:black;
+            font-style:normal;
+            font-size:x-large;
+            height:54px;
+        }
+        li
+        {
+            float:left;
+            width: 109px;
+            height: 53px;
+            font-weight: 700;
+        }
+        li a:hover
+        {
+            background-color:white;
+            }
+       
+       
+        .user_name
+        {
+            height: 54px;
+            margin-top: 0px;
+            font-style:normal; color:White;
+            width: 116px;
+        }
+        .login_menu
+        {
+            font-style:normal; color:Red;
+       
+        }
+       
+       
+        </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+    <div>
+    <nav class="navbar navbar-inverse" >
+                <div class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"> 
+                            &nbsp;&nbsp;&nbsp; 
+                            <a href="home.aspx" 
+                                style="text-align: center; font-family: 'Times New Roman', Times, serif; font-size: large; color: red; text-decoration: none;" 
+                                shape="circle">HOME</a></li>
+                        <li class="active"> &nbsp; <a href="PRODUCT.aspx"
+                                
+                                
+                                style="font-family: 'Times New Roman', Times, serif;  font-size: large; color: Red; text-decoration: none;">PRODUCT</a></li>
+                        <li class="active"> 
+                            &nbsp;&nbsp;&nbsp; 
+                            <a href="create.aspx" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif; font-size: large; color: red; text-decoration: none;">CREATE</a></li>
+                        <li class="active"> 
+                            &nbsp; <a href="Orderbyphone.aspx" 
+                                
+                                style="font-family: 'Times New Roman', Times, serif; font-size: large; color: red; text-decoration: none;">ORDER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; BYPHONE</a></li>
+                       
+                        
+                        <li ><a></a></li>
+                        <li class="active">&nbsp;&nbsp;&nbsp;&nbsp;
+                            
+          <% if (Session["name"] != null && Session["name"].ToString() != "")
+              { %>
+         
+                            <div class="user_profile">
+                                <div class="user_name">
+                                    <%=Session["name"].ToString() %>
+                                </div>
+                                <div class="logout">
+                                    <li class="login_menu"><a href="Logout.aspx">Logout</a></li>
+                                </div>
+                            </div>
+          <%} else { %>
+                        <li class="login_menu" style="font-size: large; font-color:Red;">
+                            <a href="Login.aspx">LOGIN</a></li>
+          <%} %>
+                        </li>
+                        <li ><a></a></li>
+        
+                                
+                    </ul>
+                </div>
+                </nav>
+                <br />
+
+        
+        <asp:TextBox ID="TextBox1" runat="server" BackColor="#FFFFCC" 
+            BorderColor="White"></asp:TextBox>
+        <asp:Button ID="Button1"  runat="server" Text="search" 
+            onclick="Button1_Click" BackColor="Black" ForeColor="White" Width="73px" />
+            <br />
+       <br />
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+         </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
